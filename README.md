@@ -4,7 +4,7 @@
 can be solved in every programming language. But this repository makes a different take on
 AoC problems: instead of *solving* them, it formally *specifies* their goals using TLA+.
 
-For this kind of problems, it's hard to write a spefication that does not look awfully a lot
+For some kind of problems, it's hard to write a spefication that does not look awfully a lot
 like a solution. It's important to remind that in general case a specification is very different
 from code, and it has a different purpose.
 
