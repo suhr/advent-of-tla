@@ -7,9 +7,13 @@ ASSUME ShinyGold \in Bag
 CONSTANT rules
 ASSUME rules \in [Bag -> [Bag -> Nat]]
 
+MinBy(S, le(_,_)) == CHOOSE x \in S: \A y \in S: le(x, y)
+Trans(R, S) == \A x,y,z \in S: <<x, y>> \in R /\ <<y, z>> \in R => <<x, z>> \in R
+
 ContainsRel ==
-    LET B == {<<o, i>> \in Bag \times Bag : rules[o][i] > 0}
-    IN {<<o, i>> \in Bag \times Bag : \E m: {<<o, m>>, <<m, i>>} \subseteq B}
+    LET B == Bag \times Bag
+        I == {<<o, i>> \in B : rules[o][i] > 0}
+    IN  MinBy({R \in SUBSET B : Trans(R, Bag) /\ I \subseteq R}, \subseteq)
 ContainSG == {o \in Bag : <<o, ShinyGold>> \in ContainsRel}
 
 Goal == Cardinality(ContainSG)
