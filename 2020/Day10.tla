@@ -18,7 +18,7 @@ ConnRel ==
     IN {<<px, pz>> \in P : \E py \in Point: {<<px, py>>, <<py, pz>>} \subseteq B}
 Chain == CHOOSE ch \in [1..Cardinality(Point) -> Point]:
     \A i \in 2..Len(ch): <<ch[i-1], ch[i]>> \in ConnRel
-Count(dj) == Cardinality({i \in 2..Len(Chain) : Chain[i]-Chain[i-2] = dj})
+Count(dj) == Cardinality({i \in 2..Len(Chain) : Chain[i]-Chain[i-1] = dj})
 
 Goal == Count(1) * Count(3)
 
